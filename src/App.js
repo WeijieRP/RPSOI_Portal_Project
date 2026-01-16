@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
-function App() {
+import Headers from "./Component/Header"
+import Home from "./Component/Home";
+import AllDiploma from "./Component/AllDiploma";
+import DiplomaDetail from "./Component/DiplomaDetail";
+import ModuleDetail from "./Component/Module";
+import Registration from "./Component/Registration";
+import FAQ from "./Component/FAQ";
+import NoMatchRoute from "./Component/NoMatchRoute";
+import Footer from "./Component/Footer";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Headers/>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/diplomas" element={<AllDiploma />}>
+          <Route path=":diplomaId" element={<DiplomaDetail />}>
+            <Route path=":moduleId" element={<ModuleDetail />} />
+          </Route>
+        </Route>
+
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/faq" element={<FAQ />} />
+
+        <Route path="*" element={<NoMatchRoute />} />
+      </Routes>
+      <Footer/>
+    </>
   );
 }
-
-export default App;
