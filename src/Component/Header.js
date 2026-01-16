@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { HiMenu, HiX, HiAcademicCap } from "react-icons/hi";
+import { HiMenu, HiX } from "react-icons/hi";
 import rpLogo from "../image/RP_LOGO.jpg";
 
 export default function Header() {
